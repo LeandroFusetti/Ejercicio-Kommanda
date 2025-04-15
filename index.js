@@ -2,7 +2,7 @@ const Comanda =require ('./domain/comanda')
 const Plato= require('./domain/plato')
 const Menu=require('./domain/menu')
 const MenuPlato=require('./domain/menuPlato')
-
+const express = require('express')
 
 
 const fideos= new Plato("fideos","principal",9000)
@@ -24,4 +24,20 @@ console.log(comanda1.platosComanda);
 console.log(comanda1.platosComanda);
 
 
+const app = express()
+
+app.use(express.json())
+
+app.listen(8080,()=>{
+    console.log("escuchando");
+    
+})
+
+app.get("/menu/:id",(req,res)=>{
+    const id= req.params
+    res.status(200).json({
+        id,
+        menu1
+    })
+})
 
